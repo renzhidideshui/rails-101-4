@@ -4,16 +4,18 @@
     <span class="pull-right">
       <% if current_user && current_user.is_member_of?(@group) %>
         <label class="label label-success"> 退出话题讨论 </label>
+            <%= link_to("退出", quit_group_path(@group), method: :post, class: "btn btn-default") %>
       <% else %>
         <label class="label label-warning"> 加入话题讨论 </label>
+            <%= link_to("加入", join_group_path(@group), method: :post, class: "btn btn-default") %>
       <% end %>
     </span>
 
 
-    <%= link_to("Write a Post", new_group_post_path(@group), class: "btn btn-default pull-right")%>
+    <%= link_to("新的意见", new_group_post_path(@group), class: "btn btn-default pull-right")%>
 
     <% if current_user && current_user == @group.user %>
-    <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
+    <%= link_to("编辑", edit_group_path(@group), class: "btn btn-primary pull-right")%>
   <% end %>
   </div>
   <h2><%= @group.title %></h2>
